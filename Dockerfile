@@ -1,5 +1,4 @@
-FROM jedisct1/phusion-baseimage-latest
-MAINTAINER archedraft
+FROM debian:latest
 
 # Set correct environment variables
 ENV HOME /root
@@ -9,13 +8,13 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
 RUN apt-get update &&  apt-get -y install xvfb \
-                       x11vnc \
-                       xdotool \
-                       wget \
-                       supervisor \
-                       x11-apps \
-                       net-tools && \
-                       rm -rf /var/lib/apt/lists/*
+  x11vnc \
+  xdotool \
+  wget \
+  supervisor \
+  x11-apps \
+  net-tools && \
+  rm -rf /var/lib/apt/lists/*
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 ENV DISPLAY :0.0
